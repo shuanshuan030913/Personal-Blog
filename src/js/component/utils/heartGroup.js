@@ -11,6 +11,11 @@ class HeartGroup extends Component {
 
   handleLove = () => {
     const { toggleHeart, uid, firePost, id } = this.props;
+
+    if (uid === '') {
+      alert('必須登入才能按讚呦 ≧▽≦')
+      return;
+    }
     let newArr = [];
 
     // 如果沒有人按讚

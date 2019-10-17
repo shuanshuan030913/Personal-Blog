@@ -64,7 +64,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    // openPage: 'React-blog',
+    openPage: 'Personal-Blog/dist',
   },
   optimization: {
     minimizer: [
