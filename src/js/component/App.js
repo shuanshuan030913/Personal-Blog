@@ -52,7 +52,7 @@ class App extends Component {
     const { isSignIn } = this.props;
 
     return (
-      <Router>
+      <Router　basename="/Personal-Blog/dist">
         <header className="header">
           <nav className="nav">
             <button

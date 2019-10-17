@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'boundle.[hash].js',
-    publicPath: '/',
+    publicPath: '/Personal-Blog/dist',
   },
   module: {
     rules: [
