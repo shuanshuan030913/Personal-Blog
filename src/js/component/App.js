@@ -67,7 +67,7 @@ class App extends Component {
                 <ActiveLink activeExact={true} to="/" iconClass="fas fa-home" />
               </li>
               <li>
-                <a href="https://github.com/shuanshuan030913/portfolio/tree/master" target="_blank">
+                <a href="https://github.com/shuanshuan030913/Personal-Blog" target="_blank">
                   <i className="fab fa-github"></i>
                 </a>
               </li>

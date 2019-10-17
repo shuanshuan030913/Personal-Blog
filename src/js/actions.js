@@ -1,5 +1,4 @@
 import * as activeTypes from './activeTypes';
-import * as webAPI from './WebAPI';
 import * as firebase from 'firebase';
 import firebaseRef from './firebase.config'
 
@@ -211,61 +210,3 @@ export const handletoggleHeart = (id, firePost, newArr) => {
     });
   }
 };
-
-
-// WebAPI ver.
-// export const handleGetFirePosts = () => {
-//   return function(dispatch) {
-//     dispatch(isLoading());
-//     webAPI.getFirePostsData()
-//       .then(res => res.json())
-//       .then(json => {
-//         dispatch(getFirePostsSuccess(json));
-//       });
-//   }
-// };
-
-// export const handleGetFirePost = id => {
-//   return function(dispatch) {
-//     dispatch(isLoading());
-//     webAPI.getFirePostData(id)
-//       .then(res => res.json())
-//       .then(json => {
-//         dispatch(getFirePostSuccess(json));
-//       });
-//   }
-// };
-
-// export const handleUpdateFirePost = (id, newData) => {
-//   return function(dispatch) {
-//     dispatch(isLoading());
-//     webAPI.updateFirePost(id, newData)
-//       .then(res => res.json())
-//       .then(json => {
-//         alert('Submit Success!');
-//         dispatch(uptFirePostSuccess(json));
-//       });
-//   }
-// };
-
-// export const handleAddFirePost = newData => {
-//   return function(dispatch) {
-//     dispatch(isLoading());
-//     webAPI.addFirePost(newData)
-//       .then(res => res.json())
-//       .then(json => {
-//         alert('Submit Success!');
-//         dispatch(addFirePostSuccess(json));
-//       });
-//   }
-// };
-
-// export const handleDeleteFirePost = id => {
-//   return function(dispatch) {
-//     webAPI.deleteFirePost(id)
-//       .then(() => {
-//         alert('Delete Success!');
-//         dispatch(DeleteFirePostSuccess());
-//       });
-//   }
-// };
