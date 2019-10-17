@@ -1,0 +1,70 @@
+.heart__group {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+
+  .count {
+    font-size: 14px;
+    font-weight: bold;
+    color: lighten(color(primary), 40%);
+  }
+  .fa-heart {
+    font-size: 18px;
+    color: lighten(color(primary), 40%);
+  }
+
+  &.active .count, &.active .fa-heart {
+    color: color(heart);
+  }
+  &.active {
+    .btn.heart .shining {
+      width: 18px;
+      &:before {
+        width: 10%;
+        right: -10%;
+        background: color(heart);
+        transition: all 0.25s ease-in-out;
+      }
+    }
+  }
+}
+
+.btn.heart {
+  display: block;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  padding: 0;
+
+  .shining {
+    width: 14px;
+    height: 2px;
+    left: 20px;
+    top: 17px;
+    background: transparent;
+    position: absolute;
+    transform-origin: 0% 50%;
+    transition: all 0.1s linear;
+    overflow: hidden;
+    text-align: right;
+    pointer-events: none;
+    &::before{
+      @include pseudo();
+      position: absolute;
+      top: 0;
+      right: 10%;
+      width: 50%;
+      border-radius: 4px;
+      height: 8px;
+      background: transparent;
+    }
+
+    @for $i from 2 through 8 {
+      &:nth-of-type(#{$i}){
+        transform:rotate(#{45 * $i - 45}deg);
+      }
+    }
+  }
+}

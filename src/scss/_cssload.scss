@@ -1,0 +1,41 @@
+.cssload-loader{
+  position: relative;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  width: 12px;
+  height: 12px;
+  left: 46%;
+  left: calc(50% - 6px);
+  border-radius: 12px;
+  background-color: color(primary);
+  transform-origin: 50% 50%;
+  animation: cssload-loader 1.15s ease-in-out infinite;
+}
+
+.cssload-loader:before{
+  content: "";
+  position: absolute;
+  background-color: color(primary);
+  top: 0px;
+  left: -24px;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+}
+
+.cssload-loader:after{
+  content: "";
+  position: absolute;
+  background-color: color(primary);
+  top: 0px;
+  left: 24px;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+}
+
+@keyframes cssload-loader{
+    0%{transform:rotate(0deg);}
+    50%{transform:rotate(180deg);}
+    100%{transform:rotate(180deg);}
+}

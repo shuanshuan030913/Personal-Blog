@@ -1,0 +1,13 @@
+export const IS_LODING = 'IS_LODING';
+export const IS_SIGNIN = 'IS_SIGNIN';
+export const IS_SIGNOUT = 'IS_SIGNOUT';
+export const GET_UID_SUCCESS = 'GET_UID_SUCCESS';
+
+export const EDIT_DONE = 'EDIT_DONE';
+
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
+export const GET_TAGS_SUCCESS = 'GET_TAGS_SUCCESS';
+export const UPDATE_POST_SUCCESS = 'UPDATE_POST_SUCCESS';
+export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';

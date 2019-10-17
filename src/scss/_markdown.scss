@@ -1,0 +1,22 @@
+.markdown__content {
+  line-height: 1.5;
+  white-space: pre-wrap;
+  @extend %font-sm;
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+  a {
+    color: darken(color(secondary), 35%);
+  }
+  pre {
+    background-color: color(gray);
+    padding: 10px 5px;
+    overflow: auto;
+  }
+}

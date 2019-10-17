@@ -1,0 +1,143 @@
+/* ----- variables ------*/
+
+$colors: (
+  primary   : #555,
+  secondary : #ffd550,
+  gray      : #F5F5F5,
+  danger    : #d22222,
+  heart    : #f7286d,
+);
+
+$breakpoints: (
+  "phone"       : 360px,
+  "phone-wide"  : 480px,
+  "tablet"      : 768px,
+  "tablet-wide" : 1024px,
+  "desktop"     : 1200px,
+);
+
+$font-family-title: 'Noto Serif TC', 'Microsoft JhengHei', sans-serif;
+$font-family-normal: 'Microsoft JhengHei', sans-serif;
+
+$layout-max-width: 900px;
+$header-width: 60px;
+$aside-width: 300px;
+$footer-hight: 25px;
+
+/* ----- Media queries ----- */
+
+@mixin mq($width) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+
+        @media screen and (max-width: $width) {
+            @content;
+        }
+    }
+}
+
+/* ----- function ------*/
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function breakpoint($media-size) {
+  @return map-get($breakpoints, $media-size);
+}
+
+/* ----- extends ------*/
+%transition {
+  transition: all .3s;
+}
+%font-sm {
+  font-size: 14px;
+}
+%center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ----- pseudo ----- */
+@mixin pseudo($display: block, $content: '') {
+    content: $content;
+    display: $display;
+}
+
+/* ----- grid ----- */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  align-items: center;
+
+  &__group {
+    display: block;
+    margin: 25px 0;
+  }
+  &.control__group {
+    justify-content: flex-end;
+    align-items: baseline;
+    @include mq(tablet) {
+      justify-content: center;
+    }
+  }
+  &.article {
+    align-items: flex-start;
+  }
+
+}
+
+[class^="col-"] {
+  box-sizing: border-box;
+  display: flex;
+  padding: 5px;
+  flex-wrap: wrap;
+}
+
+@for $i from 1 through 6 {
+  .title.col-#{$i} {
+    text-align: right;
+    @include mq(tablet-wide) {
+      text-align: left;
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: calc(100%/12*#{$i});
+  }
+}
+
+@media (max-width: breakpoint(tablet-wide)) {
+    @for $i from 1 through 12 {
+      .col-lg-#{$i} {
+        width: calc(100%/12*#{$i});
+      }
+    }
+}
+
+@media (max-width: breakpoint(tablet)) {
+    @for $i from 1 through 12 {
+      .col-md-#{$i} {
+        width: calc(100%/12*#{$i});
+      }
+    }
+}
+
+@media (max-width: breakpoint(phone-wide)) {
+    @for $i from 1 through 12 {
+      .col-sm-#{$i} {
+        width: calc(100%/12*#{$i});
+      }
+    }
+}
+
+/* ----- other ----- */
+
+.sup {
+  margin-right: 5px;
+  color: color(danger);
+}
