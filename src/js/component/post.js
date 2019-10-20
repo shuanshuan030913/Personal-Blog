@@ -60,7 +60,7 @@ class Post extends Component {
 
     const currentUrl = `https://shuanshuan030913.github.io/Personal-Blog/dist${this.props.match.url}`
     console.log('currentUrl', currentUrl);
-    const disqusShortname = 'blog';
+    const disqusShortname = 'blog-t0sb903fqe';
     const disqusConfig = {
       url: currentUrl,
       identifier: id,
