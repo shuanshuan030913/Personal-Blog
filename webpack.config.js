@@ -55,7 +55,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'images',
-              publicPath: './../images',
+              publicPath: '/Personal-Blog/dist/images',
             },
           },
         ],

@@ -34,6 +34,7 @@ hr {
 }
 img {
   max-width: 100%;
+  width: 100%;
 }
 .wrap {
   @extend %center;
@@ -240,6 +241,7 @@ img {
     margin: 35px 15px;
     font-size: 14px;
     line-height: 150%;
+    white-space: pre-wrap;
   }
   .aside__list {
     padding: 0;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import '../../scss/style.scss';
+import head from '../../images/head.jpg';
 
 function ActiveLink(props) {
   const { to, activeExact, label, iconClass, img } = props;
@@ -15,7 +16,7 @@ function ActiveLink(props) {
               ?
                 <div className="about__btn">
                   <div className="aside__img">
-                    <img src="https://picsum.photos/200/200" />
+                    <img src={head} />
                   </div>
                   <i className="fas fa-info" />
                 </div>

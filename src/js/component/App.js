@@ -16,7 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      asideToggle: false,
+      asideToggle: true,
     };
   }
 
@@ -35,7 +35,7 @@ class App extends Component {
   handleAsideInit = () => {
     const { asideToggle } = this.state;
     this.setState({
-      asideToggle: false,
+      asideToggle: true,
     });
   }
 

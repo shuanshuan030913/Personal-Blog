@@ -4,6 +4,14 @@ import ReactMarkdown from "react-markdown";
 import TagGroup from './../utils/tagGroup';
 import HeartGroup from './../../container/heartGroupContainer';
 
+import random01 from '../../../images/random01.jpg';
+import random02 from '../../../images/random02.jpg';
+import random03 from '../../../images/random03.jpg';
+import random04 from '../../../images/random04.jpg';
+import random05 from '../../../images/random05.jpg';
+import random06 from '../../../images/random06.jpg';
+
+
 class BlogList extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +42,31 @@ class BlogList extends Component {
       pathname: '/',
       search: `?category=${e.target.value}`,
     })
+  }
+
+  handlePic = i => {
+      switch (i % 6) {
+        case 0:
+          return random01;
+          break;
+        case 1:
+          return random02;
+          break;
+        case 2:
+          return random03;
+          break;
+        case 3:
+          return random04;
+          break;
+        case 4:
+          return random05;
+          break;
+        case 5:
+          return random06;
+          break;
+        default:
+          return random01;
+      }
   }
 
   render() {
@@ -76,7 +109,7 @@ class BlogList extends Component {
     } else if (firePosts) {
       return (
         <article className="grid">
-          { Object.values(firePosts).map(e => (
+          { Object.values(firePosts).map((e, i) => (
             <div className="card__element" key={e.date}>
               <button
                 type="button"
@@ -94,11 +127,18 @@ class BlogList extends Component {
                 </div>
                 <HeartGroup firePost={e} id={e.date} />
               </div>
+              { e.images
+                ? <div className="img">
+                    <img src={e.images} />
+                  </div>
+                : ''
+              }
               <p className="content">{e.body}</p>
               <button
                 className="readmore btn btn__secondary"
                 role="link"
                 onClick={() => {
+                  console.log('i', this.handlePic(i));
                   history.push(`/blog/${e.date}`);
                 }}
               >

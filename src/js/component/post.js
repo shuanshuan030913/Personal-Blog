@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactMarkdown from "react-markdown";
 // https://github.com/rexxars/react-markdown
+import Disqus from 'disqus-react';
+// https://www.npmjs.com/package/disqus-react
 
 import Aside from './../container/asideContainer';
 import TagGroup from './utils/tagGroup';
@@ -49,11 +51,21 @@ class Post extends Component {
 
   render() {
     const { history, isLoading, firePost, asideToggle, isSignIn, GetFirePost } = this.props;
+    const { id } = this.props.match.params;
 
     let date = 0;
     if (firePost.date) {
       date = this.getDay(firePost.date);
     }
+
+    const currentUrl = `http://localhost:8080/Personal-Blog/dist${this.props.match.url}`
+    console.log('currentUrl', currentUrl);
+    const disqusShortname = 'blog';
+    const disqusConfig = {
+      url: currentUrl,
+      identifier: id,
+      title: firePost.title,
+    };
 
     return (
       <main className="page">
@@ -75,6 +87,12 @@ class Post extends Component {
                     id={this.props.match.params.id}
                   />
                 </div>
+                { firePost.images
+                  ? <div className="img">
+                      <img src={firePost.images} />
+                    </div>
+                  : ''
+                }
                 <ReactMarkdown className="markdown__content" source={firePost.body} escapeHtml={false} />
                 <div className="footer__info">
                   { firePost.tagArr
@@ -106,6 +124,9 @@ class Post extends Component {
                       </div>)
                   : ''
                 }
+                <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
+                    Comments
+                </Disqus.CommentCount>
               </article>
           }
         </section>

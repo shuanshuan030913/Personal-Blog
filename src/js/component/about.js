@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import '../../scss/normalize.css';
-
 import Aside from './../container/asideContainer';
+
 import '../../scss/style.scss';
+import head from '../../images/head.jpg';
 
 class About extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class About extends Component {
         <section className={asideToggle ? 'main__content active' : 'main__content'}>
           <article className="wrap">
             <div className="aside__img">
-              <img src="https://picsum.photos/200/200" />
+              <img src={head} />
             </div>
             <h1 className="title text__center">Hi, I'm Sena</h1>
             <p>
@@ -36,7 +36,7 @@ class About extends Component {
             <h1 className="title">我會什麼？</h1>
             <div className="row article">
               <div className="col-4 col-md-12">
-                <h3 className="sub__title">前端主流語言</h3>
+                <h3 className="sub__title">前端技能</h3>
                 <ul>
                   <li>HTML</li>
                   <li>CSS</li>
