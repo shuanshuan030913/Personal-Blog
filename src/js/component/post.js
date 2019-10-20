@@ -58,7 +58,7 @@ class Post extends Component {
       date = this.getDay(firePost.date);
     }
 
-    const currentUrl = `http://localhost:8080/Personal-Blog/dist${this.props.match.url}`
+    const currentUrl = `https://shuanshuan030913.github.io/Personal-Blog/dist${this.props.match.url}`
     console.log('currentUrl', currentUrl);
     const disqusShortname = 'blog';
     const disqusConfig = {
