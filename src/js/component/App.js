@@ -64,7 +64,7 @@ class App extends Component {
     return (
       <Router basename="/portfolio">
         <ScrollToTop>
-          {/*<Dragger />*/}
+          <Dragger />
           <Header
             isSignIn={isSignIn}
             handleAsideToggie={this.handleAsideToggie}

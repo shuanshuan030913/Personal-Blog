@@ -79,7 +79,10 @@ const About = (props) => {
           </div>
           <hr />
           <p className="info text__center">
-            本站為結合課程所學建置的 React 部落格頁面。Hope you will like it ❤
+            本站為結合課程所學建置的 React 部落格頁面，並在網站內藏了一顆彩蛋。
+          </p>
+          <p className="info text__center">
+            Hope you will like it ❤
           </p>
         </article>
       </section>

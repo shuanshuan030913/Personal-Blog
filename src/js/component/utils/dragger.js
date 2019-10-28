@@ -5,18 +5,25 @@ class Dragger extends Component {
     super(props);
     this.state = {
       resize: false,
-      width: '',
-    }
+    };
+    this.tempCount = 0;
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.resize);
-    this.resize();
+    window.addEventListener('resize', this.resize);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { resize, width } = this.state;
-    if (!resize && width && prevState.width && width !== prevState.width) {
+  handleTimer = () => {
+    this.timerID = setTimeout(() => {
+      this.setState({
+        resize: false,
+      })}, 3500);
+  }
+
+  resize = () => {
+    this.tempCount++;
+    if (this.tempCount >= 50) {
+      this.tempCount = 0;
       this.setState({
         resize: true,
       });
@@ -24,29 +31,15 @@ class Dragger extends Component {
     }
   }
 
-  handleTimer = () => {
-    this.timerID = setTimeout(() => {
-      this.setState({
-        resize: false,
-      })}, 3000);
-  }
-
-  resize = () => {
-    this.setState({
-      width: window.innerWidth,
-    });
-
-  }
-
   render() {
-    const { resize, width } = this.state;
+    const { resize } = this.state;
     return (
       <div className={resize ? "draggle fadein" : "draggle"}>
         <div className="wanker-content">
         <h1>Bingo！</h1>
           <p><b>再拖......再拖我們就交個朋友吧！</b></p>
-          <p>這麼隱蔽的彩蛋都發現了！</p>
-          <p>\(^___________^)/~ happy coding</p>
+          <p>這麼隱蔽的彩蛋都讓你發現了！</p>
+          <p>happy coding~\(^___________^)/</p>
         </div>
       </div>
     );
