@@ -38,12 +38,26 @@
     left: 100%;
     margin-top: -15px;
     margin-left: inherit;
+    @include mq(tablet) {
+      top: 150%;
+      bottom: inherit;
+      left: inherit;
+      right: 0;
+      margin-top: inherit;
+    }
+
     &::after {
       top: 50%;
       left: 0;
       margin-left: -10px;
       margin-top: -4px;
       border-color: transparent lighten(color(primary), 15%) transparent transparent;
+      @include mq(tablet) {
+        top: -6px;
+        right: 8px;
+        left: inherit;
+        border-color: transparent transparent lighten(color(primary), 15%) transparent;
+      }
     }
   }
 }

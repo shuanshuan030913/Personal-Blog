@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
   isLoading:  state.api.isLoading,
   isSignIn:  state.user.isSignIn,
   firePosts: state.api.firePosts,
+  nightMode: state.css.nightMode,
 });
 
 const mapDispatchToProps = dispatch => ({

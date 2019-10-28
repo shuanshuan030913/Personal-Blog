@@ -4,9 +4,24 @@ import queryString from 'query-string';
 // https://www.npmjs.com/package/query-string
 
 import Aside from './../../container/asideContainer';
-import CarouselText from './carouselText';
+import LayoutBar from './LayoutBar';
 import BlogList from './blogList';
 import '../../../scss/style.scss';
+
+
+const AddBtn = ({ history }) => (
+  <button
+    className="btn addpost tooltip"
+    role="link"
+    type="button"
+    onClick={() => {
+      history.push('/edit');
+    }}
+  >
+    <i className="far fa-edit"></i>
+    <span className="tooltiptext">Add Post</span>
+  </button>
+)
 
 class Home extends Component {
   constructor(props) {
@@ -18,7 +33,7 @@ class Home extends Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     const { location, getFirePosts, handleAsideInit, searchTags, searchCategorys } = this.props;
     handleAsideInit();
     if (location.hash) {
@@ -73,56 +88,27 @@ class Home extends Component {
   }
 
   render() {
-    const { history, isLoading, asideToggle, firePosts, isSignIn, searchCategorys } = this.props;
+    const { history, isLoading, asideToggle, firePosts, isSignIn, searchCategorys, nightMode } = this.props;
     const { list, search, keyword } = this.state;
 
     return (
-      <main className="home">
+      <main className={nightMode ? "home night__mode" : "home"}>
         <Aside asideToggle={asideToggle} history={history} list={list} />
         <div className={asideToggle ? 'main__content active' : 'main__content'}>
-          <CarouselText />
           {
             isLoading
             ? <div className="cssload-loader"></div>
             : <section className="wrap">
-                <div>
-                  檢視：
-                  <button
-                    type="button"
-                    className={ list ? 'btn btn__secondary active' : 'btn btn__secondary' }
-                    onClick={() => this.layoutToggle('list')}
-                  >
-                    清單
-                  </button>
-                  <button
-                    type="button"
-                    className={ list ? 'btn btn__secondary' : 'btn btn__secondary active' }
-                    onClick={() => this.layoutToggle('')}
-                  >
-                    網格
-                  </button>
-                </div>
+                <blockquote className="blockquote">
+                  <p>你在玫瑰花上所花的時間，使你的玫瑰變得重要。</p>
+                </blockquote>
+                <LayoutBar list={list} layoutToggle={this.layoutToggle} />
                 <hr />
                 <BlogList firePosts={firePosts} list={list} history={history} searchCategorys={searchCategorys}/>
               </section>
           }
-          {isSignIn
-            ? (
-                <button
-                  className="btn addpost tooltip"
-                  role="link"
-                  type="button"
-                  onClick={() => {
-                    history.push('/edit');
-                  }}
-                >
-                  <i className="far fa-edit"></i>
-                  <span className="tooltiptext">Add Post</span>
-                </button>)
-            : ''
-          }
+          { isSignIn ? <AddBtn history={history} /> : '' }
         </div>
-
       </main>
     );
   }

@@ -12,7 +12,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'boundle.[hash].js',
-    publicPath: '/Personal-Blog/dist',
+    publicPath: '/',
+    publicPath: '/portfolio',
   },
   module: {
     rules: [
@@ -55,7 +56,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'images',
-              publicPath: '/Personal-Blog/dist/images',
+              publicPath: '/portfolio/images',
             },
           },
         ],
@@ -64,7 +65,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    openPage: 'Personal-Blog/dist',
+    openPage: 'portfolio',
   },
   optimization: {
     minimizer: [

@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleGetFirePost, handleUpdateFirePost, handleAddFirePost } from '../actions';
-import Edit from '../component/edit';
+import Edit from '../component/edit/edit';
 
 const EditContainer = props => (<Edit {...props} />);
 

@@ -1,6 +1,9 @@
 export const IS_LODING = 'IS_LODING';
 export const IS_SIGNIN = 'IS_SIGNIN';
 export const IS_SIGNOUT = 'IS_SIGNOUT';
+
+export const IS_DAY = 'IS_DAY';
+
 export const GET_UID_SUCCESS = 'GET_UID_SUCCESS';
 
 export const EDIT_DONE = 'EDIT_DONE';

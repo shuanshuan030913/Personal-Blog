@@ -9,6 +9,7 @@ const initial = {
   firePost: {},
   tagList:[],
   uid: '',
+  nightMode: false,
 };
 
 function userReducer(state = initial, action) {
@@ -86,11 +87,6 @@ function apiReducer(state = initial, action) {
         ...state,
         isLoading: false,
         editDone: true,
-        post: {
-          title: '',
-          author: '',
-          body: '',
-        },
       };
     }
     default:
@@ -98,10 +94,23 @@ function apiReducer(state = initial, action) {
   }
 
 }
+function cssReducer(state = initial, action) {
+  switch (action.type) {
+    case activeTypes.IS_DAY: {
+      return {
+        ...state,
+        nightMode: action.data,
+      };
+    }
+    default:
+      return state;
+  }
+}
 
 const reducers = combineReducers({
   api: apiReducer,
   user: userReducer,
+  css: cssReducer,
 });
 
 

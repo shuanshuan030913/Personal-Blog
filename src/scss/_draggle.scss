@@ -1,0 +1,25 @@
+.draggle{
+  display: none;
+  opacity: 0;
+  box-sizing: border-box;
+  background: color(gray);
+  color: color(primary);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  padding: 100px;
+  text-align: center;
+  z-index: 2014;
+}
+
+.fadein {
+  display: block;
+  animation: fadein 3s;
+}
+
+@keyframes fadein {
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+}

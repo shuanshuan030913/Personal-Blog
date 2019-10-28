@@ -1,5 +1,7 @@
 import * as activeTypes from './activeTypes';
-import * as firebase from 'firebase';
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 import firebaseRef from './firebase.config'
 
 const isLoading = () => ({
@@ -12,6 +14,11 @@ const isSignIn = () => ({
 
 const isSignOut = () => ({
   type: activeTypes.IS_SIGNOUT,
+});
+
+const isDay = data => ({
+  type: activeTypes.IS_DAY,
+  data
 });
 
 const getAuthStateSuccess = data => ({
@@ -51,6 +58,7 @@ const addFirePostSuccess = data => ({
 const DeleteFirePostSuccess = () => ({
   type: activeTypes.DELETE_POST_SUCCESS,
 });
+
 
 export const handleGetSearchCategorys = keyword => {
   return function(dispatch) {
@@ -92,7 +100,7 @@ export const handleGetFirePosts = () => {
 export const handleGetFirePost = date => {
   return function(dispatch) {
     dispatch(isLoading());
-    firebaseRef.orderByChild('date').equalTo(Number(date)).on('value', snapshot => {
+    firebaseRef.orderByChild('date').equalTo(Number(date)).once('value', snapshot => {
       const data = [];
       snapshot.forEach(i => {
         data.push(i.val())
@@ -201,12 +209,19 @@ export const handleGetAuthState = () => {
 };
 
 
-
+// 按讚
 export const handletoggleHeart = (id, firePost, newArr) => {
   return function(dispatch) {
     firebaseRef.child(id).set({
       ...firePost,
       heartCount: newArr,
     });
+  }
+};
+
+// 護眼模式
+export const handleDayToggle = data => {
+  return function(dispatch) {
+    dispatch(isDay(data));
   }
 };

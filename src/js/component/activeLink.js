@@ -3,6 +3,12 @@ import { Route, Link } from 'react-router-dom';
 import '../../scss/style.scss';
 import head from '../../images/head.jpg';
 
+const Image = ({ image }) => (
+  <div className="aside__img">
+    <img src={image} />
+  </div>
+)
+
 function ActiveLink(props) {
   const { to, activeExact, label, iconClass, img } = props;
   return (
@@ -15,12 +21,10 @@ function ActiveLink(props) {
             {img
               ?
                 <div className="about__btn">
-                  <div className="aside__img">
-                    <img src={head} />
-                  </div>
+                  <Image image={head} />
                   <i className="fas fa-info" />
                 </div>
-              : <i className={iconClass}></i>
+              : <i className={iconClass} />
             }
           </Link>
         </div>

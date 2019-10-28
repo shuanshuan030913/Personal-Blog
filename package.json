@@ -33,6 +33,7 @@
     "react-router-config": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-slick": "^0.25.2",
+    "react-syntax-highlighter": "^11.0.2",
     "redux-thunk": "^2.3.0",
     "sass": "^1.22.0",
     "sass-loader": "^8.0.0",

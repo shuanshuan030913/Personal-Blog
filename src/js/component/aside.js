@@ -7,7 +7,7 @@ class Aside extends Component {
     super(props);
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     const { getSearchTags } = this.props;
     getSearchTags();
   }
@@ -33,7 +33,7 @@ class Aside extends Component {
 
   render() {
     const { asideToggle, history, tagList } = this.props;
-    const category = ["Front-End", "Travel", "Guqin", "Jotting"];
+    const category = ["Front-End", "Travel", "Music", "Jotting"];
 
     return (
       <aside className={asideToggle ? 'aside active' : 'aside'}>

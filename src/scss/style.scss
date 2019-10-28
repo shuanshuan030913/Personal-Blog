@@ -5,11 +5,12 @@
 @import './markdown';
 @import './tooltip';
 @import './cssload';
+@import './draggle';
 
 
 /* ----- layout ------*/
 ::selection {
-  background-color: lighten(color(secondary), 26%);
+  background-color: lighten(color(secondary), 20%);
 }
 :focus {
   outline: inherit;
@@ -67,6 +68,10 @@ img {
       margin-left: 0;
     }
   }
+}
+.night__mode {
+  background-color: darken(color(primary), 20%);
+  color: #fff;
 }
 .header {
   background-color: darken(color(gray), 2%);
@@ -149,7 +154,6 @@ img {
   @extend %transition;
   position: fixed;
   z-index: 100;
-  background: #fff;
   overflow: auto;
   top: 0;
   left: -($aside-width + $header-width);
@@ -159,6 +163,7 @@ img {
   box-sizing: border-box;
   box-shadow: 0 0 10px darken(color(gray), 3%);
   transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+
   @include mq(tablet-wide) {
     width: inherit;
     padding: 20px 30px;
@@ -241,7 +246,6 @@ img {
     margin: 35px 15px;
     font-size: 14px;
     line-height: 150%;
-    white-space: pre-wrap;
   }
   .aside__list {
     padding: 0;
@@ -282,12 +286,22 @@ a {
 }
 
 .blockquote {
-  margin: 20px 0 80px;
+  margin: 20px 0 40px;
+  padding-top: 123px;
   quotes:"\201C""\201D""\2018""\2019";
-  text-align: center;
+  color: darken(color(primary), 25%);
+  background:
+    radial-gradient(darken(color(gray), 25%) 1.1px, transparent 1.1px),
+    radial-gradient(darken(color(gray), 25%) 1.1px, transparent 1.1px),
+    transparent;
+  background-size: 30px 30px;
+  background-position: 5px 5px;
+  .night__mode & {
+    color: #fff;
+  }
 
   @include mq(tablet) {
-    margin: 0 0 60px 0;
+    padding-top: 70px;
   }
 
   &::before, &::after {
@@ -307,12 +321,53 @@ a {
   p {
     display:inline;
     font-family: $font-family-title;
-    font-size: 24px;
-    font-style: italic;
-    font-weight: normal;
+    font-size: 28px;
     margin: 0 5px 0 10px;
-    border-bottom: 1px solid lighten(color(primary), 55%);
-    padding-bottom: 5px;
+    @include mq(tablet) {
+      font-size: 24px;
+    }
+  }
+}
+.layout__bar {
+  display: flex;
+  justify-content: space-between;
+}
+.color__toggle {
+  input[type=checkbox] {
+    display: none;
+
+    & + label {
+      @extend %transition;
+      background-color: color(gray);
+      width: 50px;
+      height: 20px;
+      border-radius: 20px;
+      display: block;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    &:checked + label {
+      background-color: #040d1c;
+      & ~ section {
+        background-color: #568eef;
+      }
+      & .planet {
+        margin-left: 0;
+        background-color: #f0f0f0;
+        box-shadow: 0 0 20px white;
+      }
+    }
+  }
+
+  .planet{
+    @extend %transition;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: color(secondary);
+    margin-left: calc(100% - 20px);
+    box-shadow: 0 0 100px rgba(249, 240, 104,1);
   }
 }
 .card__element {
@@ -396,6 +451,7 @@ a {
 
 /* ----- pages ------*/
 .home {
+  border: 1px solid transparent;
   .list {
     .card__element span {
       cursor: pointer;
@@ -426,20 +482,26 @@ a {
       display: block;
     }
     .title {
+      @extend %transition;
       margin: 16px 0 5px;
+      font-size: 28px;
+      cursor: pointer;
+      &:hover {
+        color: lighten(color(primary), 10%);
+      }
     }
     .content {
       overflow: hidden;
-      text-overflow: ellipsis;
       line-height: 1.5;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+      white-space: pre-wrap;
     }
   }
 }
-.home, .page, .edit, .about {
-  margin-top: 60px;
+.page, .edit, .about, .nomatch {
+  padding-top: 60px;
 }
 
 .edit {
@@ -478,7 +540,6 @@ a {
   }
 }
 .about {
-  font-size: 14px;
   line-height: 1.5;
   .text__center {
     text-align: center;

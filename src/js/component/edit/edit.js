@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import Aside from './../../container/asideContainer';
+import TagInput from './tagInput';
 
-import Aside from './../container/asideContainer';
-import '../../scss/style.scss';
 
 class Edit extends Component {
   constructor(props) {
@@ -13,12 +13,13 @@ class Edit extends Component {
       title: '',
       body: '',
       date: '',
+      image: '',
       sort: '',
       heartCount: [],
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.props.handleAsideInit();
     const id = this.props.match.params.id ? this.props.match.params.id : '';
     if (id) {
@@ -36,6 +37,7 @@ class Edit extends Component {
         body: firePost.body,
         date: firePost.date,
         sort: firePost.sort,
+        image: firePost.image,
         heartCount: firePost.heartCount ? firePost.heartCount : [],
       });
     }
@@ -51,8 +53,34 @@ class Edit extends Component {
   }
 
   handleSelectChange = e => {
+    let imgUrl;
+
+    let feArr = ['https://i.imgur.com/D4M9zSU.jpg', 'https://i.imgur.com/dwrun0V.jpg', 'https://i.imgur.com/VajunCz.jpg'];
+    const feIndex = Math.floor((Math.random() * feArr.length));
+
+    let travelArr = ['https://i.imgur.com/t6E9BN0.jpg', 'https://i.imgur.com/LBpjy2a.jpg'];
+    const travelIndex = Math.floor((Math.random() * travelArr.length));
+
+    switch (e.target.value) {
+      case 'Front-End':
+        imgUrl = feArr[feIndex];
+        break;
+      case 'Travel':
+        imgUrl = travelArr[travelIndex];
+        break;
+      case 'Music':
+        imgUrl = 'https://i.imgur.com/fttHlE0.jpg';
+        break;
+      case 'Jotting':
+        imgUrl = 'https://i.imgur.com/1sTBcWU.jpg';
+        break;
+      case 4:
+      default:
+        imgUrl = 'https://i.imgur.com/D4M9zSU.jpg';
+    }
     this.setState({
       [e.target.name]: e.target.value,
+      image: imgUrl,
     });
   }
 
@@ -133,7 +161,7 @@ class Edit extends Component {
                       <option hidden default></option>
                       <option value="Front-End">Front-End</option>
                       <option value="Travel">Travel</option>
-                      <option value="Guqin">Guqin</option>
+                      <option value="Music">Music</option>
                       <option value="Jotting">Jotting</option>
                     </select>
                   </div>
@@ -169,25 +197,13 @@ class Edit extends Component {
                 </div>
                 <div className="row__group">
                   <div className="col-12">標籤：</div>
-                  <div>
-                  {
-                    tagArr
-                    ? tagArr.map((e, index) => (
-                      <span className="input__tag" key={index}>
-                        {e}
-                        <i className="cross fas fa-times" onClick={event => this.deleteTagArr(event, e)}></i>
-                      </span>))
-                    : ''
-                  }
-                    <input
-                      className="form-element"
-                      name="tag"
-                      value={tag}
-                      onChange={this.handleTagChange}
-                      onKeyPress={this.addTagArr}
-                      placeholder="請以 , 區分多筆標籤"
-                    />
-                  </div>
+                  <TagInput
+                    tagArr={tagArr}
+                    tag={tag}
+                    handleTagChange={this.handleTagChange}
+                    addTagArr={this.addTagArr}
+                    deleteTagArr={this.deleteTagArr}
+                  />
                 </div>
                 <hr />
                 <div className="row control__group">

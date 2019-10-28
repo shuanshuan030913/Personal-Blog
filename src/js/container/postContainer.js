@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handleGetFirePost, handleDeleteFirePost, handletoggleHeart } from '../actions';
-import Post from '../component/post';
+import Post from '../component/post/post';
 
 const PostContainer = props => (<Post {...props} />);
 
@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
   isSignIn:  state.user.isSignIn,
   firePost: state.api.firePost,
   postKey: state.api.key,
+  nightMode: state.css.nightMode,
 });
 
 const mapDispatchToProps = dispatch => ({

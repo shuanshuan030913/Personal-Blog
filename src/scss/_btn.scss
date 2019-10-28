@@ -32,8 +32,12 @@
   &__secondary {
     border: 1px solid darken(color(secondary), 8%);
     color: color(primary);
-    background-color: #fff;
+    background-color: transparent;
+    .night__mode & {
+      color: #fff;
+    }
     &:hover, &.active {
+      color: color(primary);
       background-color: darken(color(secondary), 8%);
     }
   }
@@ -58,6 +62,9 @@
   }
   &.list {
     background-color: transparent;
+    .night__mode & {
+      color: #fff;
+    }
     &:hover {
       color: darken(color(secondary), 15%);
     }
